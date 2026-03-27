@@ -110,7 +110,7 @@ async def main():
 
         # Process log files
         for filename in os.listdir(file_path):
-            logfile_msg = ChatMessageContent(role=AuthorRole.USER, content=f"USER > {file_path}/{filename}"
+            logfile_msg = ChatMessageContent(role=AuthorRole.USER, content=f"USER > {file_path}/{filename}")
             await asyncio.sleep(30) # Wait to reduce TPM
             print(f"\nReady to process log file: {filename}\n")
 
@@ -180,7 +180,7 @@ class DevopsPlugin:
         log_message = "\n".join(log_entries)
         self.append_to_log_file(logfile, log_message)
 
-        return f"Service {service_name} restarted successfully.”
+        return f"Service {service_name} restarted successfully."
 
     @kernel_function(description="A function that rollsback the transaction")
     def rollback_transaction(self, logfile: str = "") -> str:
@@ -196,7 +196,7 @@ class DevopsPlugin:
         return "Transaction rolled back successfully."
 
 
-    @kernel_function(description="A function that redeploys the named resource”) 
+    @kernel_function(description="A function that redeploys the named resource") 
     def redeploy_resource(self, resource_name: str = "", logfile: str = "") -> str:
         log_entries = [
             f"[{datetime.now() .strftime('%Y-%m-%d %H:%M:%S')}] ALERT DevopsAssistant: Resource deploy:"
@@ -207,13 +207,13 @@ class DevopsPlugin:
         log message = "\n".join(log_entries) :
         self.append_to_log_file(logfile, log_message)
 
-        return f"Resource ‘{resource_name}' redeployed successfully."
+        return f"Resource '{resource_name}' redeployed successfully."
 
 
-    @kernel_function(description="A function that increases the quota”)
+    @kernel_function(description="A function that increases the quota")
     def increase_quota(self, logfile: str = "") -> str:
         log_entries = [
-            f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] ALERT DevopsAssistant: High request volumn3"
+            f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] ALERT DevopsAssistant: High request volumne"
             f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] INFO APIManager: Quota increase requested"
             f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] INFO APIManager: Quota successfully increased"
         ]
@@ -223,7 +223,7 @@ class DevopsPlugin:
 
         return "Successfully increased quota.”
 
-    @kernel_function(description="A function that escalates the issue”)
+    @kernel_function(description="A function that escalates the issue")
     def escalate_issue(self, logfile: str = "") -> str:
         log_entries = [
             f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] ALERT DevopsAssistant: Cannot resolve issue"
@@ -233,16 +233,16 @@ class DevopsPlugin:
         log_message = "\n".join(log_entries)
         self.append_to_log_file(logfile, log_message)
 
-        return “Submitted escalation request.”
+        return "Submitted escalation request."
 
 
 # class for Log File functions
 class LogFilePlugin:
 """A plugin that reads and writes log files."""
 
-    @kernel_function(description="Accesses the given file path string and returns the file contents as
+    @kernel_function(description="Accesses the given file path string and returns the file contents as a string")
     def read_log_file(self, filepath: str = "") -> str:
-        with open(filepath, ‘r', encoding='utf-8') as file:
+        with open(filepath, 'r', encoding='utf-8') as file:
             return file.read()
 
 if __name__ == "__main__":
